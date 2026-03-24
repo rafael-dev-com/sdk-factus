@@ -1,6 +1,5 @@
 package nellehsoft.sdk_factus.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 import java.util.Date;

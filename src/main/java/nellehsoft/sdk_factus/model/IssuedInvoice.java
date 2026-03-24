@@ -1,7 +1,12 @@
 package nellehsoft.sdk_factus.model;
 
+import lombok.Getter;
+import lombok.experimental.SuperBuilder;
+
 import java.util.Date;
 
+@Getter
+@SuperBuilder
 public class IssuedInvoice extends BillBase {
     private Integer id;
     private String number;
