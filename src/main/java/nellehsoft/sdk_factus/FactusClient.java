@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.FeignException;
 import nellehsoft.sdk_factus.exception.FactusException;
 import nellehsoft.sdk_factus.model.Auth;
+import nellehsoft.sdk_factus.model.CreditNote;
 import nellehsoft.sdk_factus.model.DraftBill;
 import nellehsoft.sdk_factus.model.FactusResponse;
 
@@ -19,6 +20,14 @@ public class FactusClient extends Api{
     public FactusResponse validateAndCreateBill(DraftBill draftBill) throws FactusException {
         try {
             return apiClient.validateAndCreateBill(draftBill);
+        } catch (FeignException e) {
+            throw new FactusException(e.status(), parseException(e.contentUTF8()));
+        }
+    }
+
+    public FactusResponse validateAndCreditNotes(CreditNote creditNote) throws FactusException {
+        try {
+            return apiClient.validateAndCreateCreditNotes(creditNote);
         } catch (FeignException e) {
             throw new FactusException(e.status(), parseException(e.contentUTF8()));
         }
